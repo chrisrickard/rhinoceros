@@ -8,14 +8,10 @@ import java.awt.PopupMenu;
 import java.awt.SystemTray;
 import java.awt.Toolkit;
 import java.awt.TrayIcon;
-import java.awt.TrayIcon.MessageType;
+//import java.awt.TrayIcon.MessageType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.PrintStream;
 import java.net.URI;
-import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 public class Rhinoceros
@@ -63,7 +59,7 @@ public class Rhinoceros
 			}
 		}
 		else {
-			JOptionPane.showMessageDialog(null, "SystemTray not supported, how embarrassing", "Screenshot Error", 0);
+			JOptionPane.showMessageDialog(null, "SystemTray not supported, how embarrassing", "Error", 0);
 			System.exit(0);
 		}
 	}
@@ -77,7 +73,6 @@ public class Rhinoceros
 			this.trayIcon.displayMessage("Server Error", e.getMessage(), TrayIcon.MessageType.ERROR);
 		}
 	}
-
 
 	public void menuItem_openServer() {
 		URI uri = null;
