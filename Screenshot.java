@@ -20,14 +20,12 @@ public class Screenshot
 	
 	public static BufferedImage getScreenshot() {
 		try {
-			return getErrorImage();
-			//BufferedImage image = Screenshot.getRobot().createScreenCapture(screenRectangle);
-			//return image;
+			BufferedImage image = Screenshot.getRobot().createScreenCapture(screenRectangle);
+			return image;
 		}
 		catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Error taking Screenshot", 0);
+			return getErrorImage();
 		}
-		return null;
 	}
 	
 	public static BufferedImage getThumbnail() {
