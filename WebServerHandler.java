@@ -11,14 +11,12 @@ import org.eclipse.jetty.server.handler.AbstractHandler;
 
 public class WebServerHandler extends AbstractHandler
 {
-  public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response)
-    throws IOException, ServletException
-  {
-    response.setContentType("image/png");
-    response.setStatus(200);
-    baseRequest.setHandled(true);
+	public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		response.setContentType("image/png");
+		response.setStatus(200);
+		baseRequest.setHandled(true);
 
-    BufferedImage image = Screenshot.getScreenshot();
-    ImageIO.write(image, "png", response.getOutputStream());
-  }
+		BufferedImage image = Screenshot.getScreenshot();
+		ImageIO.write(image, "png", response.getOutputStream());
+	}
 }

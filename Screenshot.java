@@ -9,18 +9,27 @@ import javax.swing.JOptionPane;
 
 public class Screenshot
 {
-  public static BufferedImage getScreenshot()
-  {
-    try
-    {
-      Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-      Rectangle screenRectangle = new Rectangle(screenSize);
-      Robot robot = new Robot();
-      BufferedImage image = robot.createScreenCapture(screenRectangle);
-      return image;
-    }
-    catch (Exception e) {
-      JOptionPane.showMessageDialog(null, e.getMessage(), "Error taking Screenshot", 0);
-    }return null;
-  }
+	private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	private static Rectangle screenRectangle = new Rectangle(screenSize);
+	private static Robot robot;
+
+	
+	public static BufferedImage getScreenshot() {
+		try {
+			BufferedImage image = Screenshot.getRobot().createScreenCapture(screenRectangle);
+			return image;
+		}
+		catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error taking Screenshot", 0);
+		}return null;
+	}
+	
+	private static Robot getRobot() throws Exception {
+		if(Screenshot.robot == null) {
+			Screenshot.robot	= new Robot();
+		}
+		
+		return Screenshot.robot;
+	}
+	
 }
