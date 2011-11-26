@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
 import java.net.URI;
 import javax.swing.JOptionPane;
 
+import rhinoceros.*;
+
 public class Rhinoceros
 {
 	private SystemTray systemTray;
@@ -65,6 +67,8 @@ public class Rhinoceros
 	}
 
 	private void initializeServer() {
+		Screenshot s = new Screenshot();
+		
 		this.server = new WebServer();
 		try {
 			this.server.Listen();

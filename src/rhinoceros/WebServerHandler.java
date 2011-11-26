@@ -16,7 +16,7 @@ public class WebServerHandler extends AbstractHandler
 		response.setStatus(200);
 		baseRequest.setHandled(true);
 
-		BufferedImage image = Screenshot.getScreenshot();
+		BufferedImage image = Screenshot.getThumbnail();
 		ImageIO.write(image, "png", response.getOutputStream());
 	}
 }

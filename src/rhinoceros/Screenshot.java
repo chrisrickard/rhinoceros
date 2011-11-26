@@ -30,7 +30,7 @@ public class Screenshot
 	
 	public static BufferedImage getThumbnail() {
 		BufferedImage image = getScreenshot();
-		image = resize(image, 100, 100);
+		image = resize(image, 500, 500);
 		return image;
 	}
 	
