@@ -29,8 +29,9 @@ public class Screenshot
 	}
 	
 	public static BufferedImage getThumbnail() {
+		int factor = 5;
 		BufferedImage image = getScreenshot();
-		image = resize(image, 500, 500);
+		image = resize(image, (image.getHeight() / factor), (image.getWidth() / factor));
 		return image;
 	}
 	
@@ -46,8 +47,7 @@ public class Screenshot
 	}
 	
 	private static BufferedImage resize(BufferedImage image, int width, int height) {
-		BufferedImage resizedImage = new BufferedImage(width, height,
-		BufferedImage.TYPE_INT_ARGB);
+		BufferedImage resizedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g = resizedImage.createGraphics();
 		g.drawImage(image, 0, 0, width, height, null);
 		g.dispose();

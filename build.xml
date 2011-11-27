@@ -5,23 +5,12 @@
     <property name="build" location="build"/>
     <property name="dist"  location="dist"/>
 
-    <property name="jetty.lib" location="lib" />
-    <property name="classpath" value=".:lib/jetty-all.jar:lib/servlet-api-2.5.jar:lib/servlet-api-3.0.jar:lib/swing-layout-1.0.4.jar" />
-
-
     <path id="dep.runtime">
         <fileset dir="./lib">
             <include name="**/*.jar" />
         </fileset>
     </path>
-    <property name="dep.cp" value="${toString:dep.runtime}" />
 
-
-    <path id="jetty.lib.path">
-        <pathelement path="${jetty.lib}/jetty-all.jar" />
-        <pathelement path="${jetty.lib}/servlet-api-2.5.jar" />
-        <pathelement path="${jetty.lib}/servlet-api-3.0.jar" />
-    </path>
 
     <target name="init">
         <!-- Create the time stamp -->
@@ -32,7 +21,7 @@
 
     <target name="compile" depends="init" description="compile the source">
         <!-- Compile the java code from ${src} into ${build} -->
-        <javac srcdir="${src}" destdir="${build}" classpathref="${dep.cp}" includeantruntime="true" />
+        <javac srcdir="${src}" destdir="${build}" classpathref="dep.runtime" includeantruntime="true" />
 
         <copy todir="${build}/lib">
             <fileset dir="lib" />
@@ -49,8 +38,6 @@
         <manifestclasspath property="manifest.cp" jarfile="${dist}/rhinoceros.jar">
             <classpath refid="dep.runtime" />
         </manifestclasspath>
-        <echo message="Build Classpath: ${dep.cp}" />
-        <echo message="Manifest Classpath: ${manifest.cp}" />
 
         <jar jarfile="${dist}/rhinoceros.jar" basedir="${build}">
             <manifest>
