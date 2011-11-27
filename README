@@ -3,14 +3,3 @@ Rhinoceros is in its infancy... but will one day be:
 * an app for easy screen sharing amongst smallish teams
 * an app that allows anyone you want with a web browser to see your current screen
 * an app that allows you to see at a glance all your (connected) friends screens at a single glance.. all through a web browser
-
-Now, some bits for me to remember:
-
-To compile: (from rhinoceros/src)
-
-javac -cp ".:libraries/servlet-api-2.5.jar:libraries/jetty-all.jar:libraries/swing-layout-1.0.4.jar" rhinoceros/*.java -d ../bin/
-
-To run: (frp, rhinoceros/bin)
-
-java -cp .:./jetty-all.jar:./servlet-api-2.5.jar:./servlet-api-3.0.jar:./swing-layout-1.0.4.jar rhinoceros/Rhinoceros
-

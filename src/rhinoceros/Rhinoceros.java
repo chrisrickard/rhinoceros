@@ -14,7 +14,9 @@ import java.awt.event.ActionListener;
 import java.net.URI;
 import javax.swing.JOptionPane;
 
-import rhinoceros.*;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
+
 
 public class Rhinoceros
 {
@@ -35,14 +37,26 @@ public class Rhinoceros
 		if (SystemTray.isSupported())
 		{
 			this.systemTray = SystemTray.getSystemTray();
-			Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/rhinoceros/resources/tray.gif"));
+			//Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/rhinoceros/resources/tray.gif"));
+			Image image = null;
+
+			try {
+				InputStream imageStream = getClass().getResourceAsStream("/resources/tray.gif");
+				image = ImageIO.read(imageStream);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
 
 			PopupMenu popup = new PopupMenu();
 
 			MenuItem screenshotItem = new MenuItem("Show local server...");
-			screenshotItem.addActionListener(new ActionListener() { public void actionPerformed(ActionEvent e) { Rhinoceros.this.menuItem_openServer();
+			screenshotItem.addActionListener(new ActionListener() { 
+				public void actionPerformed(ActionEvent e) { 
+					Rhinoceros.this.menuItem_openServer();
 				}
 			});
+
 			popup.add(screenshotItem);
 
 			MenuItem exitItem = new MenuItem("Exit");
